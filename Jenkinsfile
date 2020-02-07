@@ -22,6 +22,7 @@ node {
 
     stage "Deploy"
 
-        sh "sed 's#127.0.0.1:30400/hello-admatic:latest#'$BUILDIMG'#' applications/hello-admatic/k8s/deployment.yaml | kubectl apply -f -"
+        sh "sed 's#127.0.0.1:30400/hello-admatic:latest#'$BUILDIMG'#' applications/hello-admatic/k8s/deployment.yaml"
+        sh "kubectl apply -f applications/hello-admatic/k8s/deployment.yaml"
         sh "kubectl rollout status deployment/hello-admatic"
 }
